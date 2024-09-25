@@ -4,16 +4,18 @@ import colors from '../color';
 const View = styled.View`
   background-color: ${colors.bgColor};
   flex: 1;
-  padding: 0px 50px;
+  padding: 0px 30px;
   padding-top: 100px;
 `;
 const Text = styled.Text`
   font-size: 35px;
   font-weight: 700;
+  color: #fff;
 `;
 const Title = styled.Text`
   color: ${colors.textColor};
   font-size: 38px;
+  font-weight: 500;
   margin-bottom: 100px;
 `;
 const Btn = styled.TouchableOpacity`
@@ -27,12 +29,12 @@ const Btn = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
   elevation: 5;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 1px 1px 3px rgba(41, 30, 95, 0.2);
 `;
-const Home = () => (
+const Home = ({navigation: {navigate}}) => (
   <View>
     <Title>My Jounal</Title>
-    <Btn>
+    <Btn onPress={() => navigate('Write')}>
       <Text>+</Text>
     </Btn>
   </View>
