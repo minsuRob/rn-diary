@@ -100,7 +100,7 @@ const Movies: React.FC<NativeStackScreenProps<any, 'Movies'>> = () => {
               intensity={85}
               style={StyleSheet.absoluteFill}>
               <Wrapper>
-                <Poster source={{uri: makeImgPath(movie.backdrop_path)}} />
+                <Poster source={{uri: makeImgPath(movie.poster_path)}} />
                 <Column>
                   <Title isDark={isDark}>{movie.original_title}</Title>
                   {movie.vote_average > 0 ? (
