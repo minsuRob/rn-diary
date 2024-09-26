@@ -47,25 +47,23 @@ const Movies: React.FC<NativeStackScreenProps<any, 'Movies'>> = () => {
     </Loader>
   ) : (
     <Container>
-      {
-        <Swiper
-          loop
-          timeout={5.0}
-          controlsEnabled={false}
-          containerStyle={{width: '100%', height: SCREEN_HEIGHT / 4}}>
-          {nowPlaying.map(movie => (
-            <View>
-              <BgImg
-                style={StyleSheet.absoluteFill}
-                source={{uri: makeImgPath(movie.backdrop_path)}}
-              />
-              <BlurView>
-                <Title>{movie.original_title}</Title>
-              </BlurView>
-            </View>
-          ))}
-        </Swiper>
-      }
+      <Swiper
+        loop
+        timeout={3.5}
+        controlsEnabled={false}
+        containerStyle={{width: '100%', height: SCREEN_HEIGHT / 4}}>
+        {nowPlaying.map(movie => (
+          <View key={movie.id}>
+            <BgImg
+              style={StyleSheet.absoluteFill}
+              source={{uri: makeImgPath(movie.backdrop_path)}}
+            />
+            <BlurView intensity={80} style={StyleSheet.absoluteFill}>
+              <Title>{movie.original_title}</Title>
+            </BlurView>
+          </View>
+        ))}
+      </Swiper>
     </Container>
   );
 };
