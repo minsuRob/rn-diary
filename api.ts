@@ -16,4 +16,4 @@ const nowPlaying = () =>
     `${BASE_URL}/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1`,
   ).then(res => res.json());
 
-export const movieApi = {trending, upcoming, nowPlaying};
+export const moviesApi = {trending, upcoming, nowPlaying};
