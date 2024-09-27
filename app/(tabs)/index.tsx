@@ -28,7 +28,7 @@ const ListTitle = styled.Text`
   margin-left: 30px;
 `;
 
-const TrendingScroll = styled.ScrollView`
+const TrendingScroll = styled.FlatList`
   margin-top: 20px;
 `;
 
@@ -155,18 +155,19 @@ const Movies: React.FC<NativeStackScreenProps<any, 'Movies'>> = () => {
       <ListContainer>
         <ListTitle>Trending Movies</ListTitle>
         <TrendingScroll
-          contentContainerStyle={{paddingLeft: 30}}
+          data={trending}
           horizontal
-          showsHorizontalScrollIndicator={false}>
-          {trending.map(movie => (
+          keyExtractor={item => item.id + ''}
+          contentContainerStyle={{paddingLeft: 30}}
+          showsHorizontalScrollIndicator={false}
+          renderItem={({item}) => (
             <VMedia
-              key={movie.id}
-              posterPath={movie.poster_path}
-              originalTitle={movie.original_title}
-              voteAverage={movie.vote_average}
+              posterPath={item.poster_path}
+              originalTitle={item.original_title}
+              voteAverage={item.vote_average}
             />
-          ))}
-        </TrendingScroll>
+          )}
+        />
       </ListContainer>
       <ComingSoonTitle>Coming soon</ComingSoonTitle>
       {upcoming.map(movie => (
