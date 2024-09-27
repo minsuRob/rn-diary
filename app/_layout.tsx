@@ -6,8 +6,11 @@ import {useEffect} from 'react';
 import 'react-native-reanimated';
 
 import {useColorScheme} from '@/hooks/useColorScheme';
+import {QueryClient, QueryClientProvider} from 'react-query';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
+const queryClient = new QueryClient();
+
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
@@ -27,11 +30,13 @@ export default function RootLayout() {
   }
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{headerShown: true}} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+        <Stack>
+          <Stack.Screen name="(tabs)" options={{headerShown: true}} />
+          <Stack.Screen name="+not-found" />
+        </Stack>
+      </ThemeProvider>
+    </QueryClientProvider>
   );
 }
