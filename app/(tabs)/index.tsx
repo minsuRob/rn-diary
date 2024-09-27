@@ -13,7 +13,7 @@ import {
   Text,
 } from 'react-native';
 import Swiper from 'react-native-swiper';
-import {QueryClient, useQuery} from 'react-query';
+import {QueryClient, useQuery, useQueryClient} from 'react-query';
 import styled from 'styled-components/native';
 
 const API_KEY = '10923b261ba94d897ac6b81148314a3f';
@@ -55,20 +55,25 @@ const ComingSoonTitle = styled(ListTitle)`
 `;
 
 const Movies: React.FC<NativeStackScreenProps<any, 'Movies'>> = () => {
-  const {isLoading: nowPlayingLoading, data: nowPlayingData} = useQuery(
-    'nowPlaying',
-    moviesApi.nowPlaying,
-  );
-  const {isLoading: upcomingLoading, data: upcomingData} = useQuery(
-    'upcoming',
-    moviesApi.upcoming,
-  );
-  const {isLoading: trendingLoading, data: trendingData} = useQuery(
-    'trending',
-    moviesApi.trending,
-  );
-  const [refreshing, setRefreshing] = useState(false);
-  const onRefresh = async () => {};
+  const queryClient = useQueryClient();
+  const {
+    isLoading: nowPlayingLoading,
+    data: nowPlayingData,
+    isRefetching: isRefetchingNowPlaying,
+  } = useQuery('nowPlaying', moviesApi.nowPlaying);
+  const {
+    isLoading: upcomingLoading,
+    data: upcomingData,
+    isRefetching: isRefetchingUpcoming,
+  } = useQuery('upcoming', moviesApi.upcoming);
+  const {
+    isLoading: trendingLoading,
+    data: trendingData,
+    isRefetching: isRefetchingTrending,
+  } = useQuery('trending', moviesApi.trending);
+  const onRefresh = async () => {
+    queryClient.refetchQueries(['movies']);
+  };
 
   const renderVMedia = ({item}: any) => (
     <VMedia
@@ -87,10 +92,11 @@ const Movies: React.FC<NativeStackScreenProps<any, 'Movies'>> = () => {
     />
   );
 
-  const movieKeyExtractor = item => item.id + '';
+  const movieKeyExtractor = (item: any) => item.id + '';
 
   const loading = nowPlayingLoading || upcomingLoading || trendingLoading;
-
+  const refreshing =
+    isRefetchingNowPlaying || isRefetchingUpcoming || isRefetchingTrending;
   return loading ? (
     <Loader>
       <ActivityIndicator />
