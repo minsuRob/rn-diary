@@ -1,4 +1,5 @@
 import {MovieResponse, moviesApi} from '@/api';
+import HList from '@/components/HList';
 import HMedia from '@/components/HMedia';
 import Loader from '@/components/Loader';
 import Slide from '@/components/Slide';
@@ -70,25 +71,6 @@ const Movies: React.FC<NativeStackScreenProps<any, 'Movies'>> = () => {
     queryClient.refetchQueries(['movies']);
   };
 
-  const renderVMedia = ({item}: any) => (
-    <VMedia
-      posterPath={item.poster_path}
-      originalTitle={item.original_title}
-      voteAverage={item.vote_average}
-    />
-  );
-
-  const renderHMedia = ({item}: any) => (
-    <HMedia
-      posterPath={item.poster_path}
-      originalTitle={item.original_title}
-      overview={item.overview}
-      releaseDate={item.release_date}
-    />
-  );
-
-  const movieKeyExtractor = (item: any) => item.id + '';
-
   const loading = nowPlayingLoading || upcomingLoading || trendingLoading;
   const refreshing =
     isRefetchingNowPlaying || isRefetchingUpcoming || isRefetchingTrending;
@@ -123,27 +105,11 @@ const Movies: React.FC<NativeStackScreenProps<any, 'Movies'>> = () => {
               />
             ))}
           </Swiper>
-          <ListContainer>
-            <ListTitle>Trending Movies</ListTitle>
-            {trendingData ? (
-              <FlatList
-                style={{marginTop: 20}}
-                horizontal
-                data={trendingData.results}
-                keyExtractor={item => item.id + ''}
-                showsHorizontalScrollIndicator={false}
-                contentContainerStyle={{paddingHorizontal: 30}}
-                ItemSeparatorComponent={VSeparator}
-                renderItem={({item}) => (
-                  <VMedia
-                    posterPath={item.poster_path || ''}
-                    originalTitle={item.original_title}
-                    voteAverage={item.vote_average}
-                  />
-                )}
-              />
-            ) : null}
-          </ListContainer>
+
+          {trendingData ? (
+            <HList title="Trending Movies" data={trendingData.results} />
+          ) : null}
+
           <ComingSoonTitle>Coming soon</ComingSoonTitle>
         </>
       }
