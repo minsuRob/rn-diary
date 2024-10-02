@@ -42,6 +42,7 @@ export default function TabLayout() {
         name="tv"
         options={{
           title: 'tv',
+          // href: '/tv',
           tabBarIcon: ({color, focused}) => (
             <TabBarIcon
               name={focused ? 'code-slash' : 'code-slash-outline'}
