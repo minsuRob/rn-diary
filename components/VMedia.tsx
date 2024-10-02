@@ -30,8 +30,7 @@ const VMedia: React.FC<VMediaProps> = ({
 }) => {
   const router = useRouter();
   const goToDetail = () => {
-    router.push('/tv/detail');
-    // navigation.navigate('Stack', {screen: 'Detail'});
+    router.push({pathname: '/tv/detail', params: {query: 'LSY'}});
   };
   return (
     <TouchableOpacity onPress={goToDetail}>
