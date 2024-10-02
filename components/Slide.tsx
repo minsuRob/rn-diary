@@ -10,6 +10,7 @@ import {
 import styled from 'styled-components/native';
 import {makeImgPath} from '../utils';
 import Poster from './Poster';
+import {useRouter} from 'expo-router';
 
 const BgImg = styled.Image``;
 
@@ -54,9 +55,12 @@ const Slide: React.FC<SlideProps> = ({
   overview,
 }) => {
   const isDark = useColorScheme() === 'dark';
-  const navigation = useNavigation();
+  const router = useRouter();
   const goToDetail = () => {
-    // navigation.navigate('Stack', {screen: 'Detail'});
+    router.push({
+      pathname: '/tv/detail',
+      params: {query: originalTitle, posterPath: posterPath},
+    });
   };
   return (
     <TouchableWithoutFeedback onPress={goToDetail}>

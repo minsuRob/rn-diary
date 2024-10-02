@@ -5,8 +5,9 @@ import styled from 'styled-components/native';
 import Poster from './Poster';
 import Votes from './Votes';
 import {useRouter} from 'expo-router';
+import {Movie, TV} from '@/api';
 
-const Movie = styled.View`
+const Container = styled.View`
   align-items: center;
 `;
 
@@ -21,27 +22,32 @@ interface VMediaProps {
   posterPath: string;
   originalTitle: string;
   voteAverage: number;
+  fullData: Movie | TV;
 }
 
 const VMedia: React.FC<VMediaProps> = ({
   posterPath,
   originalTitle,
   voteAverage,
+  fullData,
 }) => {
   const router = useRouter();
   const goToDetail = () => {
-    router.push({pathname: '/tv/detail', params: {query: 'LSY'}});
+    router.push({
+      pathname: '/tv/detail',
+      params: {query: originalTitle, posterPath: posterPath},
+    });
   };
   return (
     <TouchableOpacity onPress={goToDetail}>
-      <Movie>
+      <Container>
         <Poster path={posterPath} />
         <Title>
           {originalTitle.slice(0, 12)}
           {originalTitle.length > 12 ? '...' : null}
         </Title>
         <Votes votes={voteAverage} />
-      </Movie>
+      </Container>
     </TouchableOpacity>
   );
 };
