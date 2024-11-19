@@ -35,16 +35,29 @@ export default function TabTwoScreen() {
     Montserrat_700Bold,
   });
   return (
-    <>
-      <View style={styles.PrevNextBtn}>
-        <AntDesign name="arrowleft" size={22} color="#FFF" />
+    <Swiper
+      showsButtons={true}
+      activeDotColor="#8A56AC"
+      dotColor="#998FA2"
+      nextButton={
+        <View style={styles.PrevNextBtn}>
+          <AntDesign name="arrowright" size={22} color="#FFF" />
+        </View>
+      }
+      prevButton={
+        <View style={styles.PrevNextBtn}>
+          <AntDesign name="arrowleft" size={22} color="#FFF" />
+        </View>
+      }>
+      <View>
+        <Text>Meet up UI-KIT1</Text>
       </View>
-      <View style={styles.PrevNextBtn}>
-        <AntDesign name="arrowright" size={22} color="#FFF" />
+      <View>
+        <Text>Meet up UI-KIT2</Text>
       </View>
-    </>
-    // <Swiper
-    //   nextButton={
-    //   }></Swiper>
+      <View>
+        <Text>Meet up UI-KIT3</Text>
+      </View>
+    </Swiper>
   );
 }
