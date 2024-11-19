@@ -17,6 +17,14 @@ const styles = StyleSheet.create({
   headerImage: {
     color: '#808080',
   },
+  PrevNextBtn: {
+    height: 60,
+    borderRadius: 30,
+    backgroundColor: '#8A56AC',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 60,
+  },
 });
 
 export default function TabTwoScreen() {
@@ -27,9 +35,14 @@ export default function TabTwoScreen() {
     Montserrat_700Bold,
   });
   return (
-    <View>
-      <AntDesign name="arrowright" size={22} />
-    </View>
+    <>
+      <View style={styles.PrevNextBtn}>
+        <AntDesign name="arrowleft" size={22} color="#FFF" />
+      </View>
+      <View style={styles.PrevNextBtn}>
+        <AntDesign name="arrowright" size={22} color="#FFF" />
+      </View>
+    </>
     // <Swiper
     //   nextButton={
     //   }></Swiper>
