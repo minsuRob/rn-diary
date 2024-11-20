@@ -14,6 +14,9 @@ import {
 const h = Dimensions.get('window').width;
 const w = Dimensions.get('window').height;
 const styles = StyleSheet.create({
+  text: {},
+  title: {},
+  img: {},
   headerImage: {
     color: '#808080',
   },
@@ -50,7 +53,13 @@ export default function TabTwoScreen() {
         </View>
       }>
       <View>
-        <Text>Meet up UI-KIT1</Text>
+        <Image source={require('@/images/img1.png')} style={styles.img} />
+        <Text style={styles.title}>Meet Up UI-Kit</Text>
+        <Text style={styles.text}>
+          When I was 5 years old, my mother always told me that happiness was
+          the key to life. When I went to school, they asked me what I wanted to
+          be when I grew up.
+        </Text>
       </View>
       <View>
         <Text>Meet up UI-KIT2</Text>
