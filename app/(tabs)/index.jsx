@@ -17,17 +17,49 @@ import {
   Montserrat_600SemiBold,
   Montserrat_700Bold,
 } from '@expo-google-fonts/montserrat';
+import {router} from 'expo-router';
 
 const w = Dimensions.get('window').width;
 const h = Dimensions.get('window').height;
 const styles = StyleSheet.create({
-  img: {},
-  container: {},
-  title: {
-    gap: 8,
+  img: {
+    height: '50%',
+    width: '120%',
+    resizeMode: 'contain',
   },
-  detail: {},
-  btn: {},
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#121212',
+  },
+  title: {
+    color: '#FFF',
+    fontFamily: 'Montserrat_700Bold',
+    fontSize: 30,
+    marginTop: 20,
+  },
+  detail: {
+    color: '#FFF',
+    fontFamily: 'Montserrat_400Regular',
+    fontSize: 18,
+    textAlign: 'center',
+    paddingHorizontal: 20,
+    lineHeight: 30,
+    marginTop: 30,
+  },
+  btn: {
+    marginTop: 80,
+    backgroundColor: '#E2443B',
+    paddingHorizontal: 140,
+    paddingVertical: 10,
+    borderRadius: 30,
+  },
+  text: {
+    fontFamily: 'Montserrat_600SemiBold',
+    fontSize: 30,
+    color: '#FFF',
+  },
 });
 
 const App = props => {
@@ -41,8 +73,8 @@ const App = props => {
       </Text>
       <TouchableOpacity
         style={styles.btn}
-        onPress={() => props.navigation.navigate('onboarding')}>
-        <Text>Next</Text>
+        onPress={() => router.push('/onboarding')}>
+        <Text style={styles.text}>Next</Text>
       </TouchableOpacity>
     </View>
   );
