@@ -14,9 +14,31 @@ import {
 const h = Dimensions.get('window').width;
 const w = Dimensions.get('window').height;
 const styles = StyleSheet.create({
-  text: {},
-  title: {},
-  img: {},
+  slide: {
+    flex: 1,
+    paddingTop: 80,
+    marginHorizontal: 30,
+  },
+  text: {
+    fontFamily: 'Montserrat_400Regular',
+    marginTop: 20,
+    fontSize: 16,
+    lineHeight: 25,
+    marginLeft: 10,
+  },
+  title: {
+    fontFamily: 'Montserrat_700Bold',
+    marginTop: 60,
+    marginHorizontal: 10,
+    fontSize: 32,
+  },
+  img: {
+    alignSelf: 'center',
+    borderTopRightRadius: 80,
+    borderBottomLeftRadius: 80,
+    // height: h * 0.5,
+    // width: w * 0.9,
+  },
   headerImage: {
     color: '#808080',
   },
@@ -51,7 +73,8 @@ export default function TabTwoScreen() {
         paddingVertical: 20,
         flex: 1,
       }}
-      // paginationStyle={{marginRight: w * 0.7}}
+      // style={styles.wrapper}
+      paginationStyle={{marginRight: w * 0.35, marginBottom: h * 0.02}}
       showsButtons={true}
       activeDotColor="#8A56AC"
       dotColor="#998FA2"
@@ -65,7 +88,7 @@ export default function TabTwoScreen() {
           <AntDesign name="arrowleft" size={22} color="#FFF" />
         </View>
       }>
-      <View>
+      <View style={styles.slide}>
         <Image source={require('@/images/img1.png')} style={styles.img} />
         <Text style={styles.title}>Meet Up UI-Kit</Text>
         <Text style={styles.text}>
@@ -74,10 +97,10 @@ export default function TabTwoScreen() {
           be when I grew up.
         </Text>
       </View>
-      <View>
+      <View style={styles.slide}>
         <Text>Meet up UI-KIT2</Text>
       </View>
-      <View>
+      <View style={styles.slide}>
         <Text>Meet up UI-KIT3</Text>
       </View>
     </Swiper>
