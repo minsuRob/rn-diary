@@ -11,26 +11,14 @@ import {
   Montserrat_700Bold,
 } from '@expo-google-fonts/montserrat';
 
-const h = Dimensions.get('window').height;
 const w = Dimensions.get('window').width;
+const h = Dimensions.get('window').height;
+
 const styles = StyleSheet.create({
   slide: {
     flex: 1,
     paddingTop: 80,
     marginHorizontal: 30,
-  },
-  text: {
-    fontFamily: 'Montserrat_400Regular',
-    marginTop: 20,
-    fontSize: 16,
-    lineHeight: 25,
-    marginLeft: 10,
-  },
-  title: {
-    fontFamily: 'Montserrat_700Bold',
-    marginTop: 60,
-    marginHorizontal: 10,
-    fontSize: 32,
   },
   img: {
     alignSelf: 'center',
@@ -39,52 +27,79 @@ const styles = StyleSheet.create({
     height: h * 0.5,
     width: w * 0.9,
   },
-  headerImage: {
-    color: '#808080',
+  title: {
+    fontFamily: 'Montserrat_700Bold',
+    marginTop: 60,
+    marginHorizontal: 10,
+    fontSize: 32,
   },
-  PrevNextBtn: {
-    height: 60,
-    borderRadius: 30,
-    backgroundColor: '#8A56AC',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: 60,
+  text: {
+    color: '#767676',
+    fontFamily: 'Montserrat_400Regular',
+    marginTop: 20,
+    fontSize: 16,
+    lineHeight: 25,
+    marginLeft: 10,
   },
 });
 
-export default function TabTwoScreen() {
+const App = () => {
   let [fontsLoaded] = useFonts({
     Montserrat_400Regular,
     Montserrat_500Medium,
     Montserrat_600SemiBold,
     Montserrat_700Bold,
   });
+
+  // if (!fontsLoaded) {
+  //   return <AppLoading />;
+  // } else {
   return (
     <Swiper
       buttonWrapperStyle={{
         backgroundColor: 'transparent',
+        flexDirection: 'row',
         position: 'absolute',
         bottom: 0,
         left: 0,
-        flexDirection: 'row',
-        justifyContent: 'flex-end',
-        alignItems: 'flex-end',
+        flex: 1,
         paddingHorizontal: 30,
         paddingVertical: 20,
-        flex: 1,
+        justifyContent: 'flex-end',
+        alignItems: 'flex-end',
       }}
       // style={styles.wrapper}
-      paginationStyle={{marginRight: w * 0.7, marginBottom: h * 0.02}}
       showsButtons={true}
+      paginationStyle={{
+        marginRight: w * 0.7,
+        marginBottom: h * 0.02,
+      }}
       activeDotColor="#8A56AC"
       dotColor="#998FA2"
       nextButton={
-        <View style={styles.PrevNextBtn}>
+        <View
+          style={{
+            height: 60,
+            borderRadius: 30,
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: 60,
+            backgroundColor: '#8A56AC',
+          }}>
           <AntDesign name="arrowright" size={22} color="#FFF" />
         </View>
       }
       prevButton={
-        <View style={styles.PrevNextBtn}>
+        <View
+          style={{
+            height: 60,
+            borderRadius: 30,
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: 60,
+            backgroundColor: '#8A56AC',
+            marginHorizontal: 20,
+          }}>
           <AntDesign name="arrowleft" size={22} color="#FFF" />
         </View>
       }>
@@ -99,16 +114,17 @@ export default function TabTwoScreen() {
       </View>
       <View style={styles.slide}>
         <Image source={require('@/images/img2.png')} style={styles.img} />
-        <Text style={styles.title}>Meet Up UI-Kit</Text>
+        <Text style={styles.title}>Discover</Text>
         <Text style={styles.text}>
           When I was 5 years old, my mother always told me that happiness was
           the key to life. When I went to school, they asked me what I wanted to
           be when I grew up.
         </Text>
       </View>
+
       <View style={styles.slide}>
         <Image source={require('@/images/img3.png')} style={styles.img} />
-        <Text style={styles.title}>Meet Up UI-Kit</Text>
+        <Text style={styles.title}>Get Started</Text>
         <Text style={styles.text}>
           When I was 5 years old, my mother always told me that happiness was
           the key to life. When I went to school, they asked me what I wanted to
@@ -117,7 +133,7 @@ export default function TabTwoScreen() {
       </View>
       <View style={styles.slide}>
         <Image source={require('@/images/img4.png')} style={styles.img} />
-        <Text style={styles.title}>Meet Up UI-Kit</Text>
+        <Text style={styles.title}>Welcome</Text>
         <Text style={styles.text}>
           When I was 5 years old, my mother always told me that happiness was
           the key to life. When I went to school, they asked me what I wanted to
@@ -126,4 +142,7 @@ export default function TabTwoScreen() {
       </View>
     </Swiper>
   );
-}
+  // }
+};
+
+export default App;
