@@ -39,6 +39,19 @@ export default function TabTwoScreen() {
   });
   return (
     <Swiper
+      buttonWrapperStyle={{
+        backgroundColor: 'transparent',
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        alignItems: 'flex-end',
+        paddingHorizontal: 30,
+        paddingVertical: 20,
+        flex: 1,
+      }}
+      // paginationStyle={{marginRight: w * 0.7}}
       showsButtons={true}
       activeDotColor="#8A56AC"
       dotColor="#998FA2"
