@@ -11,8 +11,8 @@ import {
   Montserrat_700Bold,
 } from '@expo-google-fonts/montserrat';
 
-const h = Dimensions.get('window').width;
-const w = Dimensions.get('window').height;
+const h = Dimensions.get('window').height;
+const w = Dimensions.get('window').width;
 const styles = StyleSheet.create({
   slide: {
     flex: 1,
@@ -36,8 +36,8 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     borderTopRightRadius: 80,
     borderBottomLeftRadius: 80,
-    // height: h * 0.5,
-    // width: w * 0.9,
+    height: h * 0.5,
+    width: w * 0.9,
   },
   headerImage: {
     color: '#808080',
@@ -74,7 +74,7 @@ export default function TabTwoScreen() {
         flex: 1,
       }}
       // style={styles.wrapper}
-      paginationStyle={{marginRight: w * 0.35, marginBottom: h * 0.02}}
+      paginationStyle={{marginRight: w * 0.7, marginBottom: h * 0.02}}
       showsButtons={true}
       activeDotColor="#8A56AC"
       dotColor="#998FA2"
@@ -98,10 +98,31 @@ export default function TabTwoScreen() {
         </Text>
       </View>
       <View style={styles.slide}>
-        <Text>Meet up UI-KIT2</Text>
+        <Image source={require('@/images/img2.png')} style={styles.img} />
+        <Text style={styles.title}>Meet Up UI-Kit</Text>
+        <Text style={styles.text}>
+          When I was 5 years old, my mother always told me that happiness was
+          the key to life. When I went to school, they asked me what I wanted to
+          be when I grew up.
+        </Text>
       </View>
       <View style={styles.slide}>
-        <Text>Meet up UI-KIT3</Text>
+        <Image source={require('@/images/img3.png')} style={styles.img} />
+        <Text style={styles.title}>Meet Up UI-Kit</Text>
+        <Text style={styles.text}>
+          When I was 5 years old, my mother always told me that happiness was
+          the key to life. When I went to school, they asked me what I wanted to
+          be when I grew up.
+        </Text>
+      </View>
+      <View style={styles.slide}>
+        <Image source={require('@/images/img4.png')} style={styles.img} />
+        <Text style={styles.title}>Meet Up UI-Kit</Text>
+        <Text style={styles.text}>
+          When I was 5 years old, my mother always told me that happiness was
+          the key to life. When I went to school, they asked me what I wanted to
+          be when I grew up.
+        </Text>
       </View>
     </Swiper>
   );
