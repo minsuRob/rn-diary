@@ -73,7 +73,7 @@ const App = props => {
       </Text>
       <TouchableOpacity
         style={styles.btn}
-        onPress={() => router.push('/onboarding')}>
+        onPress={() => router.push('/page2')}>
         <Text style={styles.text}>Next</Text>
       </TouchableOpacity>
     </View>
