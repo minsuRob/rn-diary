@@ -48,7 +48,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: '100%',
     justifyContent: 'space-between',
-    marginTop: 65,
+    paddingHorizontal: 20,
+    paddingTop: 50,
   },
   cont3: {
     backgroundColor: '#FFF',
