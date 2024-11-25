@@ -7,7 +7,10 @@ import {
   View,
   TouchableOpacity,
   ImageBackground,
+  ScrollView,
+  TextInput,
 } from 'react-native';
+import Icon from '@expo/vector-icons/Entypo';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import Swiper from 'react-native-swiper';
 // import AppLoading from "expo-app-loading";
@@ -43,10 +46,86 @@ const styles = StyleSheet.create({
 });
 
 const App = props => {
+  const [popularSelected, setPopularSelected] = React.useState();
+  const onTabPressed = () => {
+    setPopularSelected(!popularSelected);
+  };
   return (
-    <ImageBackground
-      source={require('@/images/home.png')}
-      style={{width: '100%', height: '100%'}}></ImageBackground>
+    <ScrollView
+      style={{
+        height: '100%',
+        backgroundColor: '#044244',
+      }}>
+      <View
+        style={{
+          height: 260,
+          paddingHorizontal: 35,
+          // backgroundColor: '#FFF',
+          width: '100%',
+        }}>
+        <View
+          style={{
+            flexDirection: 'row',
+            width: '100%',
+            paddingTop: 40,
+            alignItems: 'center',
+          }}>
+          <View style={{width: '50%'}}>
+            <Image
+              source={require('@/images/picstack/Untitled.png')}
+              style={{
+                width: 20,
+                height: 20,
+              }}
+            />
+          </View>
+          <View style={{width: '50%', alignItems: 'flex-end'}}>
+            <Icon
+              size={22}
+              name="dots-two-vertical"
+              color="#d2d2d2"
+              style={{marginTop: 7, marginRight: -7}}
+            />
+          </View>
+        </View>
+        <Text style={{fontSize: 25, color: '#FFF', paddingVertical: 25}}>
+          Find Awesome Photos
+        </Text>
+        <View
+          style={{
+            flexDirection: 'row',
+            borderColor: '#9ca1a2',
+            borderRadius: 20,
+            borderWidth: 0.2,
+            paddingVertical: 5,
+            alignItems: 'center',
+          }}>
+          <TextInput
+            placeholder="search inispriation..."
+            style={{
+              color: '#9ca1a2',
+              fontSize: 14,
+              paddingHorizontal: 20,
+              width: '90%',
+              // backgroundColor: '#FAF',
+            }}
+          />
+          <Icon name="magnifying-glass" size={18} color="#9ca1a2" />
+        </View>
+      </View>
+      <View>
+        <View>
+          <TouchableOpacity
+            style={{
+              borderBottomColor: popularSelected ? '#FAF' : '#FFF',
+              borderBottomWidth: 4,
+              paddingVertical: 6,
+            }}>
+            <Text>MOST POPULAR</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </ScrollView>
   );
 };
 
