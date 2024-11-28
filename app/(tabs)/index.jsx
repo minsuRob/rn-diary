@@ -152,8 +152,21 @@ const App = props => {
             </Text>
           </TouchableOpacity>
         </View>
-        <View style={{paddingTop: 20, width: 'auto'}}>
+        <View
+          style={{
+            flexDirection: 'row',
+          }}>
           <Posts />
+          <View
+            style={{
+              height: 160,
+              backgroundColor: '#3c636c',
+              width: 20,
+              marginTop: 120,
+              marginLeft: 20,
+              borderTopLeftRadius: 20,
+              borderBottomLeftRadius: 20,
+            }}></View>
         </View>
       </View>
     </ScrollView>
