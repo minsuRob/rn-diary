@@ -6,14 +6,12 @@ import {
   Text,
   View,
   TouchableOpacity,
-  ImageBackground,
   ScrollView,
   TextInput,
 } from 'react-native';
 import Icon from '@expo/vector-icons/Entypo';
-import AntDesign from '@expo/vector-icons/AntDesign';
-import Swiper from 'react-native-swiper';
-// import AppLoading from "expo-app-loading";
+import Posts from '@/components/Posts';
+
 import {
   useFonts,
   Montserrat_400Regular,
@@ -46,7 +44,7 @@ const styles = StyleSheet.create({
 });
 
 const App = props => {
-  const [popularSelected, setPopularSelected] = React.useState();
+  const [popularSelected, setPopularSelected] = React.useState(true);
   const onTabPressed = () => {
     setPopularSelected(!popularSelected);
   };
@@ -113,16 +111,49 @@ const App = props => {
           <Icon name="magnifying-glass" size={18} color="#9ca1a2" />
         </View>
       </View>
-      <View>
-        <View>
+      <View
+        style={{
+          backgroundColor: '#FFF',
+          paddingHorizontal: 35,
+          borderTopLeftRadius: 40,
+          borderTopRightRadius: 40,
+          height: 1000,
+        }}>
+        <View style={{paddingTop: 20, flexDirection: 'row'}}>
           <TouchableOpacity
+            onPress={onTabPressed}
             style={{
-              borderBottomColor: popularSelected ? '#FAF' : '#FFF',
+              borderBottomColor: popularSelected ? '#044244' : '#FFF',
               borderBottomWidth: 4,
               paddingVertical: 6,
             }}>
-            <Text>MOST POPULAR</Text>
+            <Text
+              style={{
+                color: popularSelected ? '#044244' : '#9ca1a2',
+                fontSize: 20,
+              }}>
+              MOST POPULAR
+            </Text>
           </TouchableOpacity>
+          <TouchableOpacity
+            onPress={onTabPressed}
+            style={{
+              borderBottomColor: popularSelected ? '#FFF' : '#044244',
+              borderBottomWidth: 4,
+              paddingVertical: 6,
+              marginLeft: 30,
+            }}>
+            <Text
+              style={{
+                color: popularSelected ? '#9ca1a2' : '#044244',
+                fontSize: 20,
+              }}>
+              RECENT
+            </Text>
+          </TouchableOpacity>
+        </View>
+        <View style={{paddingTop: 20, width: 'auto'}}>
+          <Posts />
         </View>
       </View>
     </ScrollView>
