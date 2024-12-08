@@ -1,5 +1,6 @@
 import React from 'react';
-import {StyleSheet, View, Text, FlatList} from 'react-native';
+import styled from 'styled-components/native';
+import {FlatList} from 'react-native';
 
 const EmojiGrid = () => {
   const emojis = [
@@ -36,52 +37,48 @@ const EmojiGrid = () => {
   ];
 
   const renderItem = ({item}: {item: string}) => (
-    <View style={styles.emojiContainer}>
-      <Text style={styles.emoji}>{item}</Text>
-    </View>
+    <EmojiContainer>
+      <Emoji>{item}</Emoji>
+    </EmojiContainer>
   );
 
   return (
-    <View style={styles.container}>
+    <Container>
       <FlatList
         data={emojis}
         renderItem={renderItem}
         keyExtractor={(item, index) => index.toString()}
         numColumns={5}
-        contentContainerStyle={styles.grid}
+        contentContainerStyle={{alignItems: 'center'}}
       />
-    </View>
+    </Container>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fff',
-    marginTop: 150,
-  },
-  grid: {
-    alignItems: 'center',
-  },
-  emojiContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    margin: 5,
-    width: 60,
-    height: 60,
-    backgroundColor: '#f0f0f0',
-    borderRadius: 10,
-    shadowColor: '#000',
-    shadowOffset: {width: 0, height: 2},
-    shadowOpacity: 0.1,
-    shadowRadius: 3,
-    elevation: 2,
-  },
-  emoji: {
-    fontSize: 24,
-  },
-});
+const Container = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+`;
+
+const EmojiContainer = styled.View`
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  width: 50px;
+  height: 50px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  shadow-color: #000;
+  /* shadow-offset: { width: 0, height: 2 }; */
+  shadow-opacity: 0.1;
+  shadow-radius: 3px;
+  elevation: 2;
+`;
+
+const Emoji = styled.Text`
+  font-size: 24px;
+`;
 
 export default EmojiGrid;
