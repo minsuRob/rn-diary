@@ -1,94 +1,87 @@
 import React from 'react';
-import {StyleSheet, Image, Text, View, TouchableOpacity} from 'react-native';
-import Icon from '@expo/vector-icons/Entypo';
-export default function TabTwoScreen() {
-  return (
-    <View style={{height: '100%', backgroundColor: '#044244'}}>
-      <View
-        style={{
-          height: '50%',
-          backgroundColor: '#FFF',
-          borderBottomLeftRadius: 50,
-          borderBottomRightRadius: 50,
-          paddingHorizontal: 40,
-        }}>
-        <View style={{marginTop: 40, width: '100%', flexDirection: 'row'}}>
-          <TouchableOpacity style={{width: '50%'}}>
-            <Icon name="chevron-left" size={24} color="#044244" />
-          </TouchableOpacity>
-          <View style={{width: '50%', alignItems: 'flex-end'}}>
-            <Icon name="dots-three-vertical" size={24} color="#044244" />
-          </View>
-        </View>
-        <Image
-          source={require('@/images/socials/1.jpg')}
-          style={{
-            width: 100,
-            height: 100,
-            alignSelf: 'center',
-            marginVertical: 20,
-            borderRadius: 20,
-          }}
-        />
-        <Text
-          style={{
-            fontSize: 24,
-            fontWeight: 'bold',
-            color: '#044244',
-            alignSelf: 'center',
-          }}>
-          Sibal
-        </Text>
-        <Text style={{fontSize: 16, color: '#9ca1a2', alignSelf: 'center'}}>
-          Kiev, Ukraine
-        </Text>
-        <View style={{flexDirection: 'row', alignSelf: 'center'}}>
-          <View>
-            <Text
-              style={{
-                fontSize: 16,
-                color: '#044244',
-                fontWeight: 'bold',
-                alignSelf: 'center',
-              }}>
-              280
-            </Text>
-            <Text style={{fontSize: 16, color: '#9ca1a2', alignSelf: 'center'}}>
-              photos
-            </Text>
-          </View>
-          <View style={{marginHorizontal: 40}}>
-            <Text
-              style={{
-                fontSize: 16,
-                color: '#044244',
-                fontWeight: 'bold',
-                alignSelf: 'center',
-              }}>
-              280
-            </Text>
-            <Text style={{fontSize: 16, color: '#9ca1a2', alignSelf: 'center'}}>
-              photos
-            </Text>
-          </View>
-          <View>
-            <Text
-              style={{
-                fontSize: 16,
-                color: '#044244',
-                fontWeight: 'bold',
-                alignSelf: 'center',
-              }}>
-              280
-            </Text>
-            <Text style={{fontSize: 16, color: '#9ca1a2', alignSelf: 'center'}}>
-              photos
-            </Text>
-          </View>
-        </View>
-      </View>
+import {StyleSheet, View, Text, FlatList} from 'react-native';
+
+const EmojiGrid = () => {
+  const emojis = [
+    '😀1',
+    '😂2',
+    '😍3',
+    '🥳4',
+    '🤩5',
+    '😎6',
+    '🤔7',
+    '😴8',
+    '😇',
+    '🥺9',
+    '😡10',
+    '🤯11',
+    '🤗12',
+    '🤪13',
+    '🤓14',
+    '😱15',
+    '😭16',
+    '😅17',
+    '🙃18',
+    '🤤19',
+    '😀20',
+    '😂21',
+    '😍22',
+    '🥳23',
+    '🤩24',
+    '😀25',
+    '😂26',
+    '😍27',
+    '🥳28',
+    '🤩29',
+  ];
+
+  const renderItem = ({item}: {item: string}) => (
+    <View style={styles.emojiContainer}>
+      <Text style={styles.emoji}>{item}</Text>
     </View>
   );
-}
 
-const styles = StyleSheet.create({});
+  return (
+    <View style={styles.container}>
+      <FlatList
+        data={emojis}
+        renderItem={renderItem}
+        keyExtractor={(item, index) => index.toString()}
+        numColumns={5}
+        contentContainerStyle={styles.grid}
+      />
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    marginTop: 150,
+  },
+  grid: {
+    alignItems: 'center',
+  },
+  emojiContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: 5,
+    width: 60,
+    height: 60,
+    backgroundColor: '#f0f0f0',
+    borderRadius: 10,
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 2},
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 2,
+  },
+  emoji: {
+    fontSize: 24,
+  },
+});
+
+export default EmojiGrid;
