@@ -2,7 +2,11 @@ import React from 'react';
 import {StyleSheet, Image, Text, View, TouchableOpacity} from 'react-native';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import Feather from '@expo/vector-icons/Feather';
-
+import styled from 'styled-components/native';
+const CaptionText = styled.Text`
+  color: ${props => props.theme.color};
+  margin-left: 5px;
+`;
 export default function TabTwoScreen() {
   return (
     <View style={styles.container}>
@@ -11,6 +15,7 @@ export default function TabTwoScreen() {
           <Feather name="chevron-left" color="#FFF" size={25} />
         </TouchableOpacity>
         <Feather name="shopping-cart" color="#FFF" size={25} />
+        <CaptionText>제발</CaptionText>
       </View>
       <Image source={require('@/images/motorcycle2.png')} style={styles.img} />
       <View style={styles.cont3}>
