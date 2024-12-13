@@ -70,6 +70,9 @@ const EmojiGrid = () => {
 
 const Container = styled.View`
   background-color: #fff;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 10px;
 `;
 const GymContainer = styled.View`
   background-color: red;
