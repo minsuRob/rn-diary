@@ -73,6 +73,7 @@ const Container = styled.View`
 `;
 const GymContainer = styled.View`
   background-color: red;
+  padding: 10px;
 `;
 
 const EmojiContainer = styled.View`
