@@ -47,13 +47,15 @@ const EmojiGrid = () => {
       <NoticeContainer>
         <NoticeText>🥳 빨랑 끝내자 sh~~</NoticeText>
       </NoticeContainer>
-      <FlatList
-        data={emojis}
-        renderItem={renderItem}
-        keyExtractor={(item, index) => index.toString()}
-        numColumns={5}
-        contentContainerStyle={{alignItems: 'center'}}
-      />
+      <GymContainer>
+        <FlatList
+          data={emojis}
+          renderItem={renderItem}
+          keyExtractor={(item, index) => index.toString()}
+          numColumns={5}
+          contentContainerStyle={{alignItems: 'center'}}
+        />
+      </GymContainer>
       <ButtonContainer>
         <Button>
           <ButtonText>Button 1</ButtonText>
@@ -68,6 +70,9 @@ const EmojiGrid = () => {
 
 const Container = styled.View`
   background-color: #fff;
+`;
+const GymContainer = styled.View`
+  background-color: red;
 `;
 
 const EmojiContainer = styled.View`
