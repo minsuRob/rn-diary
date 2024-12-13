@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import {FlatList} from 'react-native';
+import {FlatList, Text} from 'react-native';
 
 const EmojiGrid = () => {
   const emojis = [
@@ -44,6 +44,9 @@ const EmojiGrid = () => {
 
   return (
     <Container>
+      <NoticeContainer>
+        <NoticeText>🥳 빨랑 끝내자 sh~~</NoticeText>
+      </NoticeContainer>
       <FlatList
         data={emojis}
         renderItem={renderItem}
@@ -51,14 +54,19 @@ const EmojiGrid = () => {
         numColumns={5}
         contentContainerStyle={{alignItems: 'center'}}
       />
+      <ButtonContainer>
+        <Button>
+          <ButtonText>Button 1</ButtonText>
+        </Button>
+        <Button>
+          <ButtonText>Button 2</ButtonText>
+        </Button>
+      </ButtonContainer>
     </Container>
   );
 };
 
 const Container = styled.View`
-  flex: 1;
-  justify-content: center;
-  align-items: center;
   background-color: #fff;
 `;
 
@@ -79,6 +87,41 @@ const EmojiContainer = styled.View`
 
 const Emoji = styled.Text`
   font-size: 24px;
+`;
+
+const NoticeContainer = styled.View`
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+`;
+const ButtonContainer = styled.View`
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+`;
+
+const Button = styled.TouchableOpacity`
+  background-color: #f0f0f0;
+  padding: 10px 20px;
+  border-radius: 10px;
+  flex: 1;
+  max-width: 150px;
+  align-items: center;
+`;
+
+const NoticeText = styled.Text`
+  padding: 10px 20px;
+  font-size: 20px;
+  color: #333;
+  background-color: #f0f0f0;
+  margin-bottom: 20px;
+`;
+const ButtonText = styled.Text`
+  font-size: 16px;
+  color: #333;
 `;
 
 export default EmojiGrid;
